@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+</head>
+<body>
+    <h1>Books: </h1>
+
+    {% for i in books %}
+    <h3 style="display: inline-block;"> {{i.id}}. {{i}} </h3> 
+    <!-- <h4 style="display: inline-block;">Author: {% for j in i.author.all %} {{ j }} {% endfor %} </h4>    # ManyToManyField -->
+    <!-- <h4 style="display: inline-block;">Genre: {{i.genre}}</h4> -->
+    <!-- <h4 style="display: inline-block;">
+        Num_of_books of corresponding authors: {% for j in i.author.all %} {{ j.num_of_books }} {% endfor %} 
+    </h4> -->
+    <a href="/book_delete/{{i.id}}/"><button >Delete</button></a>
+    <a href="/book_edit/{{i.id}}/"><button >Edit</button></a>
+    <br>
+    {% endfor %}
+
+
+    <div style = "position: absolute; left: 90vh; top: 20vh; ">
+        <form method="post" action="/books/"> {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>

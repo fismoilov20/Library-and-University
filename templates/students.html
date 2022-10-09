@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+<body>
+    <h1>Students' list: </h1>
+    <form method="get" action="/students/">
+        <input type="text" name="stext">
+        <button type="submit"> Search </button>
+    </form>
+    <br>
+
+    
+    {% for i in students_list %}
+    <h3 style="display: inline-block;"><a href="/std/{{i.id}}"> {{i.id}}. {{i}} </a></h3>
+    <h4 style="display: inline-block;">Gender: {{i.gender}}</h4>
+    <a href="/std_confirm/{{i.id}}/"><button>Delete</button></a>
+    <a href="/std_edit/{{i.id}}/"><button>Edit</button></a>
+    <br>
+    {% endfor %}
+
+
+    <div style = "position: absolute; left: 60vh; top: 20vh; align-items: center;">
+    <form method="post" action="/students/"> {% csrf_token %}
+        
+        <!-- {{form.as_p}} -->
+        {{form.name.label_tag}}
+        {{form.name}}<br>
+        {{form.gender.label_tag}}
+        {{form.gender}}<br>
+        {{form.senior.label_tag}}
+        {{form.senior}}<br>
+        {{form.num_of_books.label_tag}}
+        {{form.num_of_books}}<br>
+        <button type="submit">Add</button>
+    </form>
+    </div>
+
+</body>
+</html>

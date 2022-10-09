@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutors</title>
+</head>
+<body>
+    <h1>Tutors: </h1>
+    <form method="get" action="/tutors/">
+        <input type="text" name="stext">
+        <button type="submit"> Search </button>
+    </form>
+    <br>
+    {% for i in tutors %}
+    <h3 style="display: inline-block;"> {{i.id}}. {{i}} </h3> 
+    <!-- <h4 style="display: inline-block;">Author: {% for j in i.author.all %} {{ j }} {% endfor %} </h4>    # ManyToManyField -->
+    <!-- <h4 style="display: inline-block;">Genre: {{i.genre}}</h4> -->
+    
+    <a href="/tutor_delete/{{i.id}}/"> <button >Delete</button> </a>
+    <a href="/tutor_edit/{{i.id}}/"> <button>Edit</button> </a>
+    <br>
+    {% endfor %}
+
+    <div style = "position: absolute; left: 70vh; top: 20vh; ">
+        <form method="post" action="/tutors/"> {% csrf_token %}
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" placeholder="Name"><br>
+
+            <label for="degree">Degree: </label>
+            <select name="degree" id="degree">
+                <option value="B">Bachelor</option>
+                <option value="M">Master</option>
+                <option value="D">Doctor</option>
+            </select> <br>
+
+            <label for="age">Age: </label>
+            <input type="number" name="age" id="age"><br>
+
+            <label for="gender">Gender: </label>
+            <select name="gender" id="gender">
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+            </select> <br>
+
+            <label for="course">Course: </label>
+            <select name="course" id="course">
+                {% for i in courses %}
+                <option value="{{ i.id }}"> {{ i.name }} </option>
+                {% endfor %}
+            </select> <br>
+            
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>

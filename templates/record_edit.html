@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <form method="post" action="/record_edit/{{record.id}}/">{% csrf_token %}
+        <!-- <label for="student">Student: </label>
+        <select name="student" id="student" >
+            {% for i in students %}
+            {% if i.id == 1 %}
+            <option value="{{record.student.id}}" selected> {{record.student.name}}</option>
+            <option value="{{i.id}}"> {{i.name}}</option>
+            {% else %}
+            <option value="{{i.id}}"> {{i.name}} </option>
+            {% endif %}
+            {% endfor %}
+        </select> <br>
+
+        <label for="book">Book: </label>
+        <select name="book" id="book">
+            {% for i in books %}
+            {% if i.id == 1 %}
+            <option value="{{record.book.id}}" selected> {{record.book.name}}</option>
+            <option value="{{i.id}}"> {{i.name}}</option>
+            {% else %}
+            <option value="{{i.id}}"> {{i.name}} </option>
+            {% endif %}
+            {% endfor %} 
+        </select> <br> -->
+
+        <!-- <label for="took_date">Date Took: </label>
+        <input type='date'  name='took_date' id="took_date"  value="{{record.took_date.year}}-0{{record.took_date.month}}-0{{record.took_date.day}}"><br> -->
+
+        <label for="returned_date">Date Returned: </label>
+        <input type='date' name = 'returned_date' id="returned_date" value="{{record.returned_date.year}}-0{{record.returned_date.month}}-{{record.returned_date.day}}"><br>
+
+        <label for="returned">Returned: </label>
+        {% if record.returned == True %}
+        <input type="checkbox" name="returned" id="returned" checked> <br>
+        {% else %}
+        <input type="checkbox" name="returned" id="returned" > <br>
+        {% endif %}
+
+        <button type="submit">Edit</button>
+    </form>
+    <br>   
+    <h1></h1>
+</body>
+</html>

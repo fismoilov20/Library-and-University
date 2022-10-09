@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs</title>
+</head>
+<body>
+    <h1>Programs: </h1>
+    {% for i in programs %}
+    <h3 style="display: inline-block;"> {{i.id}}. {{i}} </h3> 
+    <!-- <h4 style="display: inline-block;">Author: {% for j in i.author.all %} {{ j }} {% endfor %} </h4>    # ManyToManyField -->
+    <!-- <h4 style="display: inline-block;">Genre: {{i.genre}}</h4> -->
+    
+    <a href="/program_delete/{{i.id}}/"> <button >Delete</button> </a>
+    <a href="/program_edit/{{i.id}}/"> <button >Edit</button> </a>
+    <br>
+    {% endfor %}
+
+
+    <div style = "position: absolute; left: 80vh; top: 20vh; ">
+        <form method="post" action="/programs/"> {% csrf_token %}
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" placeholder="Name"><br>
+
+            <label for="active">Active: </label>
+            <input type="checkbox" name="active" id="active" checked><br>
+            
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>

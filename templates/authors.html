@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+</head>
+<body>
+    <h1>Authors: </h1>
+    <form method="get" action="/authors/">
+        <input type="text" name="stext">
+        <button type="submit"> Search </button>
+    </form>
+    <br>
+
+
+    {% for i in authors %}
+    <h3 style="display: inline-block;"> <a href="/authors/{{i.id}}/"> {{i.id}}. {{i}}</a> _______</h3>
+    <h4 style="display: inline-block;"> Birth Year: {{i.birth_year}}</h4>
+    <a href="/author_delete/{{i.id}}/"> <button onclick="return confirm('Are you sure you want to delete this item?');">Delete</button> </a>
+    <a href="/author_edit/{{i.id}}/"> <button>Edit</button> </a>
+    <br>
+    {% endfor %}
+
+
+    <div style = "position: absolute; left: 90vh; top: 20vh; ">
+        <form method="post" action="/authors/"> {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>

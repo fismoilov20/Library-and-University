@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+</head>
+<body>
+    <h1>Records: </h1>
+    <form method="get" action="/records/">
+        <input type="text" name="stext">
+        <button type="submit"> Search </button>
+    </form>
+    <br>
+    {% for i in records %}
+    <h3 style="display: inline-block;"> {{i.id}}. {{i}} </h3>
+    <a href="/record_delete/{{i.id}}/"> <button>Delete</button> </a> 
+    {% if i.returned == False %}
+    <a href="/record_edit/{{i.id}}/"> <button>Edit</button> </a>
+    {% endif %}
+    <br>
+    {% endfor %}
+
+
+    <div style = "position: absolute; left: 90vh; top: 20vh; ">
+        <form method="post" action="/records/"> {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>

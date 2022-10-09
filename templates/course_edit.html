@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <form method="post" action="/course_edit/{{course.id}}/">{% csrf_token %}
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" value="{{course.name}}"><br><br>
+        
+        <label for="program">Program: </label>
+        <select name="program" id="program" multiple>
+            {% for i in programs %}
+            <option value="{{i.id}}" > {{i.name}} </option>
+            {% endfor %} 
+        </select> <br>
+
+        <label for="major">Major: </label>
+        {% if course.major == True %}
+        <input type="checkbox" name="major" checked> <br>
+        {% else %}
+        <input type="checkbox" name="major"> <br>
+        {% endif %}
+        <button type="submit">Edit</button>
+    </form>
+    <br>   
+    <h1></h1>
+</body>
+</html>

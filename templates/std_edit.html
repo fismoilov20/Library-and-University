@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <form method="post" action="/std_edit/{{ student.id }}/">{% csrf_token %}
+        <input type="text" name="name" value="{{student.name}}"> <br>
+
+        <label for="senior">Senior: </label>
+        {% if student.senior == True %}
+        <input type="checkbox" name="senior" id="senior" checked> <br>
+        {% else %}
+        <input type="checkbox" name="senior" id="senior" > <br>
+        {% endif %}
+
+        <label for="num_of_books">Number of books: </label>
+        <input type="number" name="num_of_books" id="num_of_books" value="{{student.num_of_books}}"> <br>
+
+        <button type="submit">Edit</button>
+    </form>
+    <br>   
+    <h1></h1>
+</body>
+</html>
