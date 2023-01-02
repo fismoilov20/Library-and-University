@@ -9,14 +9,14 @@
 <body>
     <h1>Records: </h1>
     <form method="get" action="/records/">
-        <input type="text" name="stext">
+        <input type="text" name="search">
         <button type="submit"> Search </button>
     </form>
     <br>
     {% for i in records %}
     <h3 style="display: inline-block;"> {{i.id}}. {{i}} </h3>
-    <a href="/record_delete/{{i.id}}/"> <button>Delete</button> </a> 
-    {% if i.returned == False %}
+    <a href="/record_delete/{{i.id}}/"> <button>Delete</button></a> 
+    {% if i.returned == False %}        <!--    if "returned" column of Record object is False    -->
     <a href="/record_edit/{{i.id}}/"> <button>Edit</button> </a>
     {% endif %}
     <br>

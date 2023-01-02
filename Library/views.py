@@ -1,4 +1,3 @@
-import email
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -179,7 +178,7 @@ def records(request):
                 f.save()
             return redirect('/records/')
 
-        word = request.GET.get('stext')                    # form inputs are stored in GET dictionary  # word=" " of input
+        word = request.GET.get('search')                    # form inputs are stored in GET dictionary  # word=" " of input
         if word is None:
             s = Record.objects.all()
         else:

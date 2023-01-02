@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Library',
-    'Library_Home',
     'University',
 ]
 
@@ -52,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Project1_Exercise.urls'
+ROOT_URLCONF = 'Library and University.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Project1_Exercise.wsgi.application'
+WSGI_APPLICATION = 'Library and University.wsgi.application'
 
 
 # Database
